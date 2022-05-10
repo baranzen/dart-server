@@ -2,7 +2,7 @@ import 'dart:io';
 import 'dart:convert';
 
 main() async {
-  var server = await HttpServer.bind('3.126.59.221', 4000);
+  var server = await HttpServer.bind('127.0.0.1', 4000);
   print('server started at ${server.address}:${server.port}');
 
   server.listen((event) {
@@ -49,6 +49,6 @@ void addTask(HttpRequest event) {
 
   event.response.headers.contentType =
       ContentType('application', 'json', charset: 'utf-8');
-  Uri redirectUri = Uri.http('3.126.59.221:4000', '/');
+  Uri redirectUri = Uri.http('localhost:4000', '/');
   event.response.redirect(redirectUri);
 }
